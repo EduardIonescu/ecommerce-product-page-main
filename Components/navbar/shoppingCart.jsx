@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function ShoppingCart({ orders, deleteOrders }) {
-	const [cartIsActive, setCartIsActive] = useState(true);
+	const [cartIsActive, setCartIsActive] = useState(false);
 
 	const sneakerInfo = {
 		thumbnailURL: "/images/image-product-1-thumbnail.jpg",

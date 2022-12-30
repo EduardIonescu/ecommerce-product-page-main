@@ -22,7 +22,7 @@ export default function Navbar({ orders, deleteOrders }) {
 				<ShoppingCart orders={orders} deleteOrders={deleteOrders} />
 				<Image
 					className="rounded-full border-2 border-transparent transition-all ease-linear duration-300
-                     hover:border-primaryOrange"
+                     hover:border-primaryOrange cursor-pointer"
 					src="/images/image-avatar.png"
 					alt="avatar image"
 					width={56}
