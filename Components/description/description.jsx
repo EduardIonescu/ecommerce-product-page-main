@@ -1,4 +1,5 @@
-export default function Description() {
+import Order from "./order";
+export default function Description({ changeOrders }) {
 	return (
 		<section className="w-[530px]">
 			<p
@@ -7,7 +8,10 @@ export default function Description() {
 			>
 				sneaker company
 			</p>
-			<h1 className="capitalize font-bold text-veryDarkBlue text-[3.3rem] mt-3 mb-7">
+			<h1
+				className="capitalize font-bold text-veryDarkBlue 
+			text-[3.3rem] leading-[3.6rem] mt-3 mb-7"
+			>
 				fall limited edition sneakers
 			</h1>
 			<p className="text-darkGrayishBlue leading-8 text-[19px]">
@@ -26,9 +30,13 @@ export default function Description() {
 					50%
 				</span>
 			</p>
-			<p className="line-through font-bold text-[18px] text-grayishBlue mt-4">
+			<p
+				className="line-through font-bold text-[18px]
+			 text-grayishBlue mt-3 mb-12"
+			>
 				$250.00
 			</p>
+			<Order changeOrders={changeOrders} />
 		</section>
 	);
 }

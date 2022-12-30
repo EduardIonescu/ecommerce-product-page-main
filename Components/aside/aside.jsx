@@ -16,6 +16,7 @@ export default function Aside() {
 				src="/images/image-product-1.jpg"
 				width={530}
 				height={530}
+				alt="sneakers image"
 			/>
 			<ul className="flex w-[530px] justify-between mt-9">
 				{thumbnailSources.map((thumbnailSource) => (

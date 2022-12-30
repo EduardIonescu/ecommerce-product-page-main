@@ -1,8 +1,9 @@
 import Image from "next/image";
 import NavLink from "./navLink";
+import ShoppingCart from "./shoppingCart";
 
 const navLinks = ["Collections", "Men", "Women", "About", "Contact"];
-export default function Navbar() {
+export default function Navbar({ orders, deleteOrders }) {
 	return (
 		<nav className="flex items-center">
 			<Image
@@ -17,15 +18,8 @@ export default function Navbar() {
 					return <NavLink key={navLink} title={navLink} />;
 				})}
 			</ul>
-			<div className="flex ml-auto items-center gap-12">
-				<button>
-					<Image
-						src="/images/icon-cart.svg"
-						alt="shopping cart"
-						width={28}
-						height={28}
-					/>
-				</button>
+			<div className="flex ml-auto items-center gap-12 relative">
+				<ShoppingCart orders={orders} deleteOrders={deleteOrders} />
 				<Image
 					className="rounded-full border-2 border-transparent transition-all ease-linear duration-300
                      hover:border-primaryOrange"

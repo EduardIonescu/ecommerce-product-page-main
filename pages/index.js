@@ -5,10 +5,20 @@ import styles from "../styles/Home.module.css";
 import Navbar from "../Components/navbar/navbar";
 import Aside from "../Components/aside/aside";
 import Description from "../Components/description/description";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+	const [orders, setOrders] = useState(0);
+
+	function changeOrders(number) {
+		setOrders(number);
+	}
+	function deleteOrders() {
+		setOrders(0);
+	}
+
 	return (
 		<>
 			<Head>
@@ -24,11 +34,11 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<header className="pt-9 pb-10 border-b-[1px] border-grayishBlue">
-				<Navbar />
+				<Navbar orders={orders} deleteOrders={deleteOrders} />
 			</header>
 			<main className="pt-28 px-16 flex gap-36">
 				<Aside />
-				<Description />
+				<Description changeOrders={changeOrders} />
 			</main>
 		</>
 	);

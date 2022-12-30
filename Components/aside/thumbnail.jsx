@@ -8,6 +8,8 @@ export default function Thumbnail({ src }) {
 				src={src}
 				width={104}
 				height={110}
+				alt=""
+				aria-hidden="true"
 			/>
 		</li>
 	);
