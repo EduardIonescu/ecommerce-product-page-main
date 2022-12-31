@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Thumbnails from "./thumbnails";
 
 const customStyles = {
@@ -23,35 +23,54 @@ const customStyles = {
 	},
 };
 
-export default function ImageModal({
-	modalIsOpen,
-	closeModal,
-	imageIndex,
-	setImageIndex,
-}) {
+export default function ImageModal({ modalIsOpen, closeModal, imageIndex }) {
+	const [modalImageIndex, setModalImageIndex] = useState(1);
+
 	function nextImage() {
-		setImageIndex((i) => {
+		setModalImageIndex((i) => {
 			if (i <= 3) {
 				return i + 1;
 			} else {
-				setImageIndex(1);
+				return 1;
 			}
 		});
 	}
 	function previousImage() {
-		setImageIndex((i) => {
+		setModalImageIndex((i) => {
 			if (i >= 2) {
 				return i - 1;
 			} else {
-				setImageIndex(4);
+				return 4;
 			}
 		});
 	}
+
+	useEffect(() => {
+		function nextHandler({ key }) {
+			{
+				if (key == "d" || key == "ArrowRight") {
+					nextImage();
+				} else if (key == "a" || key == "ArrowLeft") {
+					previousImage();
+				}
+			}
+		}
+
+		if (modalIsOpen) {
+			window.addEventListener("keydown", nextHandler);
+		}
+
+		return () => {
+			window.removeEventListener("keydown", nextHandler);
+		};
+	}, [modalIsOpen]);
+
 	return (
 		<>
 			<Modal
 				ariaHideApp={false}
 				closeTimeoutMS={500}
+				onAfterOpen={() => setModalImageIndex(imageIndex)} // Open on same index that was selected
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
 				style={customStyles}
@@ -72,7 +91,7 @@ export default function ImageModal({
 				<div className="relative">
 					<Image
 						className="rounded-2xl"
-						src={`/images/image-product-${imageIndex}.jpg`}
+						src={`/images/image-product-${modalImageIndex}.jpg`}
 						width={660}
 						height={660}
 						alt="sneakers image"
@@ -113,8 +132,8 @@ export default function ImageModal({
 					</button>
 				</div>
 				<Thumbnails
-					imageIndex={imageIndex}
-					setImageIndex={setImageIndex}
+					imageIndex={modalImageIndex}
+					setImageIndex={setModalImageIndex}
 				/>
 			</Modal>
 		</>

@@ -28,7 +28,6 @@ export default function Aside() {
 				modalIsOpen={modalIsOpen}
 				closeModal={closeModal}
 				imageIndex={imageIndex}
-				setImageIndex={setImageIndex}
 			/>
 			<Thumbnails imageIndex={imageIndex} setImageIndex={setImageIndex} />
 		</aside>

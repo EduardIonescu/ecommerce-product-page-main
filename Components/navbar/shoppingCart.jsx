@@ -1,8 +1,31 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function ShoppingCart({ orders, deleteOrders }) {
 	const [cartIsActive, setCartIsActive] = useState(false);
+
+	const cartRef = useRef(null);
+	const cartIconRef = useRef(null);
+
+	function toggleCart() {
+		setCartIsActive(!cartIsActive);
+	}
+
+	useEffect(() => {
+		function handleClickOutside(event) {
+			if (
+				cartRef.current &&
+				!cartRef.current.contains(event.target) && //Outside of cart container
+				!cartIconRef.current.contains(event.target) //Outside of cartIcon
+			) {
+				setCartIsActive(false);
+			}
+		}
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [cartRef]);
 
 	const sneakerInfo = {
 		thumbnailURL: "/images/image-product-1-thumbnail.jpg",
@@ -10,9 +33,6 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 		price: 125.0,
 	};
 
-	function toggleCart() {
-		setCartIsActive(!cartIsActive);
-	}
 	function calculateTotal(amount) {
 		return (sneakerInfo.price * parseInt(amount)).toFixed(2);
 	}
@@ -20,7 +40,7 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 	return (
 		<>
 			{/* Shopping cart icon on Navbar */}
-			<button onClick={toggleCart} className="relative">
+			<button onClick={toggleCart} className="relative" ref={cartIconRef}>
 				<Image
 					src="/images/icon-cart.svg"
 					alt="shopping cart"
@@ -39,6 +59,7 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 			{/* Shopping cart displayed when active */}
 			{cartIsActive && (
 				<article
+					ref={cartRef}
 					className="absolute top-16 inset-x-[-14rem] h-[20rem] w-[27rem]
              bg-white rounded-xl shadow-cart"
 				>
