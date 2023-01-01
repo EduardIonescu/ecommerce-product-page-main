@@ -55,7 +55,6 @@ export default function Home() {
 			 xl:w-[1350px] xl:min-w-[1350px]"
 			>
 				<Aside windowWidth={windowWidth} />
-				{console.log(windowWidth)}
 				<Description
 					windowWidth={windowWidth}
 					changeOrders={changeOrders}

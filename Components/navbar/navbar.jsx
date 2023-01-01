@@ -8,7 +8,7 @@ export default function Navbar({ orders, deleteOrders }) {
 	return (
 		<nav
 			className="flex items-center max-md:px-6 max-md:pt-5 max-md:pb-6
-			 md:pt-9 md:pb-10 md:border-b-[1px] md:border-grayishBlue relative"
+			 md:pt-9 md:pb-10 md:border-b-[1px] md:border-grayishBlue md:relative"
 		>
 			<BurgerMenu>
 				{navLinks.map((navLink) => {
@@ -28,7 +28,7 @@ export default function Navbar({ orders, deleteOrders }) {
 					return <NavLink key={navLink} title={navLink} />;
 				})}
 			</ul>
-			<div className="flex ml-auto items-center max-md:gap-6 md:gap-12 relative">
+			<div className="flex ml-auto items-center max-md:gap-6 md:gap-12 md:relative">
 				<ShoppingCart orders={orders} deleteOrders={deleteOrders} />
 				<Image
 					className="rounded-full md:border-2 md:border-transparent 

@@ -61,36 +61,41 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 			{cartIsActive && (
 				<article
 					ref={cartRef}
-					className="absolute top-16 inset-x-[-14rem] h-[20rem] w-[27rem]
-             bg-white rounded-xl shadow-cart"
+					className="absolute z-10 max-md:left-[calc((100vw-360px)/2)]
+					max-md:top-20 max-md:w-[360px] max-md:h-64
+					md:top-16 md:inset-x-[-14rem] md:h-[20rem] md:w-[27rem]
+          bg-white rounded-xl shadow-cart"
 				>
 					<h3
-						className="font-bold text-[18px] text-veryDarkBlue h-20
-                flex items-center pl-7 border-b-2 border-lightGrayishBlue"
+						className="font-bold max-md:text-[16px] md:text-[18px] 
+						text-veryDarkBlue max-md:h-16 md:h-20 max-md:pl-6
+                flex items-center md:pl-7 border-b-2 border-lightGrayishBlue"
 					>
 						Cart
 					</h3>
 					<div
-						className="w-[100%] h-60 flex items-center justify-center flex-col
-                    p-8 gap-9"
+						className="w-[100%] max-md:h-48 md:h-60 flex items-center 
+						justify-center flex-col max-md:p-6 md:p-8 max-md:gap-6 md:gap-9"
 					>
 						{orders > 0 ? (
 							<>
 								<div
-									className="text-[19px] text-darkGrayishBlue 
+									className="max-md:text-[16px] md:text-[19px] text-darkGrayishBlue 
 								flex justify-between w-[100%]"
 								>
 									<Image
-										className="rounded-md"
+										className="rounded-md md:w-60 md:h-60"
 										src={sneakerInfo.thumbnailURL}
 										alt=""
 										aria-hidden="true"
-										width={60}
-										height={60}
+										width={50}
+										height={50}
 									/>
 									<div>
-										<p>{sneakerInfo.title}</p>
-										<p>
+										<p className="max-md:pb-[1px]">
+											{sneakerInfo.title}
+										</p>
+										<p className="max-md:pt-[1px]">
 											${sneakerInfo.price.toFixed(2)} x{" "}
 											{orders}{" "}
 											<span className="font-bold text-veryDarkBlue">
@@ -103,23 +108,28 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 											delete button
 										</span>
 										<Image
-											height={24}
-											width={20}
+											className="md:w-5 md:h-6"
+											height={20}
+											width={16}
 											alt="delete"
 											src="/images/icon-delete.svg"
 										/>
 									</button>
 								</div>
 								<button
-									className="w-[100%] h-[4.25rem] bg-primaryOrange rounded-xl
-								text-[19px] text-paleOrange font-bold hover:opacity-75
-								transiton-all duration-300 ease-linear mb-auto"
+									className="w-[100%] max-md:h-14 md:h-[4.25rem] bg-primaryOrange
+								rounded-xl vmax-md:text-[16px] md:text-[19px] text-paleOrange
+								font-bold hover:opacity-75 transiton-all duration-300
+								ease-linear mb-auto"
 								>
 									Checkout
 								</button>
 							</>
 						) : (
-							<p className="font-bold text-darkGrayishBlue text-[18px]">
+							<p
+								className="font-bold text-darkGrayishBlue max-md:text-[16px]
+							 md:text-[18px]"
+							>
 								Your cart is empty.
 							</p>
 						)}
