@@ -5,12 +5,26 @@ import styles from "../styles/Home.module.css";
 import Navbar from "../Components/navbar/navbar";
 import Aside from "../Components/aside/aside";
 import Description from "../Components/description/description";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
 	const [orders, setOrders] = useState(0);
+	const [windowWidth, setWindowWidth] = useState(0);
+
+	useEffect(() => {
+		function handleWindowResize() {
+			setWindowWidth(window.innerWidth);
+		}
+		handleWindowResize();
+
+		window.addEventListener("resize", handleWindowResize);
+
+		return () => {
+			window.removeEventListener("resize", handleWindowResize);
+		};
+	}, []);
 
 	function changeOrders(number) {
 		setOrders(number);
@@ -33,12 +47,19 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<header className="pt-9 pb-10 border-b-[1px] border-grayishBlue">
+			<header className="w-full xl:w-[1350px] xl:min-w-[1350px]">
 				<Navbar orders={orders} deleteOrders={deleteOrders} />
 			</header>
-			<main className="pt-28 px-16 flex gap-36">
-				<Aside />
-				<Description changeOrders={changeOrders} />
+			<main
+				className="md:pt-28 md:px-16 md:flex md:gap-36 w-full
+			 xl:w-[1350px] xl:min-w-[1350px]"
+			>
+				<Aside windowWidth={windowWidth} />
+				{console.log(windowWidth)}
+				<Description
+					windowWidth={windowWidth}
+					changeOrders={changeOrders}
+				/>
 			</main>
 		</>
 	);

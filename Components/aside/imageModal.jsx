@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Thumbnails from "./thumbnails";
+import { NextImageButton, PreviousImageButton } from "./controlButtons";
 
 const customStyles = {
 	overlay: {
@@ -96,40 +97,12 @@ export default function ImageModal({ modalIsOpen, closeModal, imageIndex }) {
 						height={660}
 						alt="sneakers image"
 					/>
-					<button
-						onClick={previousImage}
-						className="absolute bg-paleOrange w-16 h-16 pl-2 
-          flex items-center justify-center rounded-full top-[298px] -left-8
-          hover:stroke-primaryOrange stroke-veryDarkBlue rotate-180
-          transition duration-300 ease-linear"
-					>
-						<svg width="16" height="24" alt="previous">
-							<path
-								d="m2 1 10 10-10 10"
-								stroke=""
-								strokeWidth="4"
-								fill="none"
-								fillRule="evenodd"
-							/>
-						</svg>
-					</button>
-					<button
-						onClick={nextImage}
-						className="absolute bg-paleOrange w-16 h-16 pl-2 
-          flex items-center justify-center rounded-full top-[298px] -right-8
-          hover:stroke-primaryOrange stroke-veryDarkBlue 
-          transition duration-300 ease-linear"
-					>
-						<svg width="16" height="24" alt="next">
-							<path
-								d="m2 1 10 10-10 10"
-								stroke=""
-								strokeWidth="4"
-								fill="none"
-								fillRule="evenodd"
-							/>
-						</svg>
-					</button>
+
+					<PreviousImageButton
+						previousImage={previousImage}
+						isModal={true}
+					/>
+					<NextImageButton nextImage={nextImage} isModal={true} />
 				</div>
 				<Thumbnails
 					imageIndex={modalImageIndex}

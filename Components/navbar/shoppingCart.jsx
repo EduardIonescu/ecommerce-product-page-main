@@ -42,10 +42,11 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 			{/* Shopping cart icon on Navbar */}
 			<button onClick={toggleCart} className="relative" ref={cartIconRef}>
 				<Image
+					className="md:w-7 md:height-7"
 					src="/images/icon-cart.svg"
 					alt="shopping cart"
-					width={28}
-					height={28}
+					width={24}
+					height={24}
 				/>
 				{orders > 0 && (
 					<p
