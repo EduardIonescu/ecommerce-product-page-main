@@ -32,7 +32,7 @@ export default function Order({ changeOrders }) {
 				>
 					<span className="sr-only">Decrement</span>
 					<Image
-						className="md:w-5 md:h-5"
+						className="md:w-5 md:h-auto"
 						src="/images/icon-minus.svg"
 						width={14}
 						height={14}
@@ -52,7 +52,7 @@ export default function Order({ changeOrders }) {
 				>
 					<span className="sr-only">Increment</span>
 					<Image
-						className="md:w-5 md:h-5"
+						className="md:w-5 md:h-auto"
 						src="/images/icon-plus.svg"
 						width={14}
 						height={14}
