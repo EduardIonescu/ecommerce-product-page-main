@@ -15,6 +15,7 @@ export default function Aside({ windowWidth }) {
 		setIsOpen(false);
 	}
 	if (windowWidth >= 768) {
+		// Desktop
 		return (
 			<aside>
 				<Image
@@ -37,6 +38,7 @@ export default function Aside({ windowWidth }) {
 			</aside>
 		);
 	} else {
+		// Mobile
 		function nextImage() {
 			setImageIndex((i) => {
 				if (i == 4) {

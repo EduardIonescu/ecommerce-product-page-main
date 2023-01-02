@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "../styles/Home.module.css";
 import Navbar from "../Components/navbar/navbar";
 import Aside from "../Components/aside/aside";
 import Description from "../Components/description/description";
@@ -55,10 +53,7 @@ export default function Home() {
 			 xl:w-[1350px] xl:min-w-[1350px]"
 			>
 				<Aside windowWidth={windowWidth} />
-				<Description
-					windowWidth={windowWidth}
-					changeOrders={changeOrders}
-				/>
+				<Description changeOrders={changeOrders} />
 			</main>
 		</>
 	);

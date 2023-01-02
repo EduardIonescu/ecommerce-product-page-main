@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useState } from "react";
 
 const thumbnailSources = [
 	"/images/image-product-1-thumbnail.jpg",

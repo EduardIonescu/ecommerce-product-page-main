@@ -1,5 +1,5 @@
 import Order from "./order";
-export default function Description({ windowWidth, changeOrders }) {
+export default function Description({ changeOrders }) {
 	return (
 		<section
 			className="max-md:p-5 max-md:w-full max-md:relative md:w-[530px]
