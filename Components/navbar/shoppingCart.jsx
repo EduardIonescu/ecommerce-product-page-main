@@ -61,7 +61,7 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 			{cartIsActive && (
 				<article
 					ref={cartRef}
-					className="absolute z-10 max-md:left-[calc((100vw-360px)/2)]
+					className="absolute max-md:z-10 max-md:left-[calc((100vw-360px)/2)]
 					max-md:top-20 max-md:w-[360px] max-md:h-64
 					md:top-16 md:inset-x-[-14rem] md:h-[20rem] md:w-[27rem]
           bg-white rounded-xl shadow-cart"
@@ -84,7 +84,7 @@ export default function ShoppingCart({ orders, deleteOrders }) {
 								flex justify-between w-[100%]"
 								>
 									<Image
-										className="rounded-md md:w-60 md:h-60"
+										className="rounded-md md:w-[60px] md:h-[60px]"
 										src={sneakerInfo.thumbnailURL}
 										alt=""
 										aria-hidden="true"
