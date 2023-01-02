@@ -36,7 +36,8 @@ export default function Order({ changeOrders }) {
 						src="/images/icon-minus.svg"
 						width={14}
 						height={14}
-						alt="decrement"
+						alt=""
+						aria-hidden="true"
 					/>
 				</button>
 				<p
@@ -56,7 +57,8 @@ export default function Order({ changeOrders }) {
 						src="/images/icon-plus.svg"
 						width={14}
 						height={14}
-						alt="increment"
+						alt=""
+						aria-hidden="true"
 					/>
 				</button>
 			</fieldset>
